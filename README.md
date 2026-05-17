@@ -1,98 +1,90 @@
-# 🚗 Real-Time Vehicle Telemetry Data Pipeline on AWS
+# 🚀 Enterprise Real-Time Vehicle Telemetry Platform
 
 ## 📌 Project Overview
 
-This project demonstrates an end-to-end real-time vehicle telemetry data pipeline built using AWS cloud services.
+This project simulates an enterprise-grade real-time connected vehicle telemetry platform built on AWS.
 
-The pipeline simulates live connected vehicle telemetry data and processes streaming events in real time using AWS Kinesis, Lambda, S3, Athena, DynamoDB, and QuickSight.
+The pipeline streams live vehicle sensor data using Amazon Kinesis, processes events through AWS Lambda, stores historical telemetry data in Amazon S3, maintains latest vehicle state in DynamoDB, and enables analytics using Amazon Athena and Amazon QuickSight.
 
-This project represents a real-world automotive telemetry analytics architecture similar to connected vehicle platforms used in modern automotive companies.
+This project demonstrates real-world cloud data engineering concepts including:
+
+- Real-time streaming
+- Event-driven processing
+- Historical + live data architecture
+- Serverless computing
+- Cloud analytics dashboards
+- Data visualization
+- Enterprise pipeline architecture
 
 ---
 
-# 🚀 Architecture
+# 🏗️ Architecture Diagram
 
-## End-to-End Pipeline Flow
-
-Vehicle Simulator → Amazon Kinesis → AWS Lambda → Amazon S3 → Athena → QuickSight Dashboard
+![Architecture](Architecture/architecture.png)
 
 ---
 
-# 🏗️ AWS Services Used
+# 🚀 End-to-End Pipeline Flow
+
+```text
+Vehicle Simulator (Python)
+        ↓
+Amazon Kinesis Data Stream
+        ↓
+AWS Lambda Processing
+        ↓
+Amazon S3 (Historical Storage)
+        ↓
+Amazon DynamoDB (Latest Vehicle State)
+        ↓
+Amazon Athena Query Engine
+        ↓
+Amazon QuickSight Dashboard
+```
+
+---
+
+# 🛠️ Tech Stack
 
 | Service | Purpose |
 |---|---|
-| Amazon Kinesis | Real-time data streaming |
-| AWS Lambda | Serverless data processing |
-| Amazon S3 | Historical telemetry storage |
-| Amazon DynamoDB | Latest vehicle state storage |
-| Amazon Athena | Query historical telemetry data |
-| Amazon QuickSight | Dashboard & visualization |
-| CloudWatch | Monitoring & logs |
-
----
-
-# 📊 Features
-
-- Real-time vehicle telemetry streaming
-- Serverless event-driven architecture
-- Historical telemetry storage
-- Live telemetry state management
-- SQL analytics using Athena
-- Interactive QuickSight dashboards
-- Scalable cloud-native pipeline
+| Python | Vehicle telemetry simulator |
+| Amazon Kinesis | Real-time streaming |
+| AWS Lambda | Event processing |
+| Amazon S3 | Historical data lake |
+| DynamoDB | Latest live vehicle state |
+| Athena | SQL analytics |
+| QuickSight | Dashboard visualization |
 
 ---
 
 # 📂 Project Structure
 
-```bash
-real-time-vehicle-telemetry-data-pipeline/
+```text
+enterprise-real-time-vehicle-telemetry-platform/
 │
 ├── Architecture/
-│   ├── architecture.png
-│   └── data_model.png
+│   └── architecture.png
 │
-├── Simulator/
-│   └── simulator.py
+├── Athena/
+│   └── athena.sql
 │
 ├── Lambda/
 │   └── lambda_function.py
 │
-├── Athena/
-│   └── athena.sql
+├── Simulator/
+│   └── simulator.py
 │
 ├── Dashboard/
 │   └── dashboard.png
 │
 ├── README.md
-│
 └── requirements.txt
 ```
 
 ---
 
-# ⚙️ Data Model
-
-The telemetry schema includes:
-
-- vehicle_id
-- speed
-- engine_temp
-- fuel_level
-- latitude
-- longitude
-- timestamp
-
----
-
-# 🔄 Pipeline Workflow
-
-## Step 1 — Vehicle Simulator
-
-Python script generates fake telemetry data every second.
-
-Example:
+# 🚀 Real-Time Vehicle Data Example
 
 ```json
 {
@@ -100,89 +92,78 @@ Example:
   "speed": 82,
   "engine_temp": 101,
   "fuel_level": 64,
-  "latitude": 12.9716,
-  "longitude": 77.5946,
-  "timestamp": "2026-05-09T10:20:30"
+  "timestamp": "2026-05-09T10:15:22"
 }
 ```
 
 ---
 
-## Step 2 — Real-Time Streaming
+# 📊 QuickSight Dashboard
 
-Telemetry events are pushed into Amazon Kinesis Data Streams.
+## 🚗 Vehicle Analytics Dashboard
 
----
+![Dashboard](Dashboard/dashboard.png)
 
-## Step 3 — Lambda Processing
+Dashboard includes:
 
-AWS Lambda consumes records from Kinesis and:
-
-- Stores historical data into S3
-- Updates latest vehicle state into DynamoDB
-
----
-
-## Step 4 — Historical Analytics
-
-Athena queries telemetry JSON files directly from S3.
-
-Example Query:
-
-```sql
-SELECT * 
-FROM vehicle_data
-LIMIT 10;
-```
-
----
-
-## Step 5 — Dashboard Visualization
-
-Amazon QuickSight visualizes:
-
-- Vehicle speed trends
-- Fuel level monitoring
-- Engine temperature alerts
+- Vehicle speed analytics
+- Engine temperature monitoring
+- Fuel level trends
 - Real-time telemetry insights
 
 ---
 
-# 📈 Dashboard Preview
+# 🚀 Key Features
 
-## Vehicle Telemetry Dashboard
+✅ Real-time streaming architecture
 
-- Average Vehicle Speed
-- Fuel Consumption Trends
-- Engine Temperature Alerts
+✅ Historical telemetry storage
 
----
+✅ Live vehicle state tracking
 
-# 🧠 Key Learnings
+✅ Serverless AWS processing
 
-- Real-time event streaming
-- Serverless data engineering
-- Cloud-native architecture
-- AWS analytics ecosystem
-- Data lake concepts
-- End-to-end ETL pipeline design
+✅ SQL analytics with Athena
+
+✅ Interactive dashboards with QuickSight
+
+✅ Enterprise-style cloud architecture
 
 ---
 
-# 🚀 Future Improvements
+# 🚀 Athena Sample Queries
 
-- Kafka integration
-- Spark streaming analytics
-- Real-time alert notifications
-- Predictive maintenance ML models
-- CI/CD deployment pipeline
-- Infrastructure as Code using Terraform
+## Average Vehicle Speed
+
+```sql
+SELECT vehicle_id,
+AVG(speed) AS avg_speed
+FROM vehicle_data
+GROUP BY vehicle_id;
+```
+
+## High Engine Temperature Vehicles
+
+```sql
+SELECT *
+FROM vehicle_data
+WHERE engine_temp > 100;
+```
+
+---
+
+# 🚀 Future Enhancements
+
+- Real-time alerting system
+- Predictive maintenance analytics
+- Machine learning anomaly detection
+- Apache Kafka integration
+- Terraform infrastructure automation
 
 ---
 
 # 👨‍💻 Author
 
-Rohit  
-Aspiring AWS Data Engineer
+Rohit
 
----
+AWS Data Engineering Project
